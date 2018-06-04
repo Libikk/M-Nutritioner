@@ -1,0 +1,17 @@
+html {
+  max-height: 100%;
+}
+body {
+    margin: 0px;
+    background-image: url("https://image.ibb.co/kakgfy/felt.png");
+    font-family: 'Titillium Web', sans-serif;
+}
+.container {
+  padding: 0px;
+  margin: 0px;
+  
+    .main-container {
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+}
