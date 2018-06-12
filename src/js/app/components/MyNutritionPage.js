@@ -8,17 +8,8 @@ class MyNutritionPage extends React.Component {
     console.log(this.props);
     return (
       <div className="nutrition-page-list-container">
-          {/* {myNutritionPage ? myNutritionPage.map((single, index) =>
-          <div key={index}>
-            {single.slice(0, 4).map(valuesAndNutrName => 
-              (<span key={valuesAndNutrName.nutritionName + index}>
-                {valuesAndNutrName.nutritionName}: {Math.round(valuesAndNutrName.value)}
-              </span>))}
-          </div>
-          ) : null} */}
+          {}
       </div>
-
-      
     );
   }
 }

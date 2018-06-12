@@ -21,7 +21,11 @@ class NutritionDetails extends React.Component {
 
     handleChange(event) { 
       const weight = event.target.value > 5000 ? 5000 : event.target.value;
-      this.setState({value: weight}); 
+      this.setState({value: weight});
+    }
+    addToNutPage() {
+      this.props.addToNutritionPage(this.state.value / 100);
+      this.setState({ value: 100 });
     }
 
   render() {
@@ -29,11 +33,11 @@ class NutritionDetails extends React.Component {
     const { value } = this.state;
     return(
       <div className="nutrition-container">
+      <span className="nuttrition-name-header">{singleItemNutrition.name}</span>
         <Paper>
-          <span>{singleItemNutrition.name}</span>
         <Table>
           <TableBody>
-            <TableRow>
+            <TableRow className="table-row">
               <TableCell>Nutritient</TableCell>
               <TableCell>Value per: 
                 <Input 
@@ -47,20 +51,20 @@ class NutritionDetails extends React.Component {
               </TableCell>
             </TableRow>
             {singleItemNutrition.nutrition.slice(0, 5).map((singleNutrition, index) => 
-              (<TableRow key={singleNutrition + index}>
+              (<TableRow className="table-row" key={singleNutrition + index}>
                 <TableCell>{singleNutrition.nutritionName}</TableCell>
                 <TableCell>{Math.round(singleNutrition.value * (value / 100))}</TableCell>
               </TableRow>)
             )}
             {singleItemNutrition.nutrition.slice(5).map((singleNutrition, index) => 
-              (<TableRow key={singleNutrition + index}>
+              (<TableRow className="table-row" key={singleNutrition + index}>
                 <TableCell>{singleNutrition.nutritionName}</TableCell>
                 <TableCell>{Math.round(singleNutrition.value * (value / 100))}</TableCell>
               </TableRow>)
             )}
           </TableBody>
         </Table>
-        <Button className="details-button" onClick={() => this.props.addToNutritionPage(value / 100)}>ADD IT</Button>
+        <Button className="details-button" onClick={() => this.addToNutPage()}>ADD</Button>
         </Paper>
       </div>
     );

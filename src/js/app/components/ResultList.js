@@ -27,7 +27,6 @@ class ResultList extends React.Component {
     const { searchResult } = this.props.searchData;
     const { currentPage } = this.state;
     
-    
     const indexOfLastTodo = currentPage * appSettings.resultPerPage;
     const indexOfFirstTodo = indexOfLastTodo - appSettings.resultPerPage;
     const currentTodos = searchResult.slice(indexOfFirstTodo, indexOfLastTodo);

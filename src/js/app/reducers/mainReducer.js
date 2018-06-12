@@ -31,19 +31,20 @@ const mainReducer = (state = initialState, action) => {
             { value: nutrition[9].value, nutritionName: "Magnesium" },
             { value: nutrition[12].value, nutritionName: "Sodium" },
             { value: nutrition[7].value, nutritionName: "Calcium" },
-          ]
-        }
-        });
-    case 'ADD_TO_NUTRITION_PAGE':
-    const newItem = state.singleItemNutrition.map(single => ({
-        value: single.value * action.payload,
-        weigth: 100 * action.payload,
-        nutritionName: single.nutritionName
-        }));
+        ]}
+      });
+
+        case 'ADD_TO_NUTRITION_PAGE':
+    const newItem = {
+      name: state.singleItemNutrition.name,
+      id: state.singleItemNutrition.id,
+      weight: 100 * action.payload,
+      nutrition: state.singleItemNutrition.nutrition.map(single => {
+        return { value: single.value * action.payload, nutritionName: single.nutritionName };
+      })};
     const newItemMergedWithCurrentList = state.myNutritionPage ? 
       { myNutritionPage: state.myNutritionPage.concat([newItem]) } 
     : { myNutritionPage: [newItem] };
-
     return Object.assign({}, state, newItemMergedWithCurrentList );
 
     default: return state;

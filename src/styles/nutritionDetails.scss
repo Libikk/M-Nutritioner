@@ -2,8 +2,22 @@
     width: 30%;
     height: 600px;
     float: left;
-    
+    min-width: 300px;
+    .nuttrition-name-header {
+      text-align: center;
+      display: block;
+
+    }
     .details-input input {
-        width: 100%;
+      width: 100%;
+    }
+    .details-button {
+      width: 100%;
+      .material-icons {
+        color: green;
+      }
+    }
+    .table-row {
+        height: 30px;;
     }
 }
