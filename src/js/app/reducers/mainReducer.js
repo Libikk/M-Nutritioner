@@ -1,5 +1,5 @@
 const initialState = {
-  myNutritionPage: false,
+  myNutritionList: false,
   searchResult: false,
   singleItemNutrition: null,
   error: null,
@@ -13,7 +13,6 @@ const mainReducer = (state = initialState, action) => {
 
     case 'GET_NUTRITION_DATA':
     const nutrition = action.payload.data.report.food.nutrients;
-    console.log(action.payload.data.report);
       return Object.assign({}, state, {
         singleItemNutrition: {
           name: action.payload.data.report.food.name,
@@ -40,11 +39,11 @@ const mainReducer = (state = initialState, action) => {
       id: state.singleItemNutrition.id,
       weight: 100 * action.payload,
       nutrition: state.singleItemNutrition.nutrition.map(single => {
-        return { value: single.value * action.payload, nutritionName: single.nutritionName };
+        return { value: Math.round(single.value * action.payload), nutritionName: single.nutritionName };
       })};
-    const newItemMergedWithCurrentList = state.myNutritionPage ? 
-      { myNutritionPage: state.myNutritionPage.concat([newItem]) } 
-    : { myNutritionPage: [newItem] };
+    const newItemMergedWithCurrentList = state.myNutritionList ? 
+      { myNutritionList: state.myNutritionList.concat([newItem]) } 
+    : { myNutritionList: [newItem] };
     return Object.assign({}, state, newItemMergedWithCurrentList );
 
     default: return state;

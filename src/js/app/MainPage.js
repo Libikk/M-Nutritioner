@@ -9,7 +9,7 @@ import MyNutritionPage from './components/MyNutritionPage';
 class MainPage extends React.Component {
 
   render() {
-    const { singleItemNutrition, searchResult } = this.props.searchData;
+    const { singleItemNutrition, searchResult, myNutritionList, error } = this.props.searchData;
     return (
       <div className="container">
         <div className="main-container">
@@ -17,9 +17,10 @@ class MainPage extends React.Component {
           <div className="content-container">
             {searchResult ? <ResultList /> : null}
             {singleItemNutrition ? <NutritionDetails /> : <HowItWork />}
-            <MyNutritionPage />
+            {myNutritionList ? <MyNutritionPage /> : <img className="veggie-man-image" src="/src/js/images/veggie_man.png" alt="veggie-man" />}
           </div>
         </div>
+
       </div>
     );
   }

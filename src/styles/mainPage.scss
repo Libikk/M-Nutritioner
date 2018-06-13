@@ -3,7 +3,7 @@ html {
 }
 body {
     margin: 0px;
-    background-image: url("https://image.ibb.co/kakgfy/felt.png");
+    background-image: url("/src/js/images/symphony.png");
     font-family: 'Titillium Web', sans-serif;
 }
 .container {
@@ -13,5 +13,12 @@ body {
     .main-container {
       max-width: 1260px;
       margin: 0 auto;
+
+      .veggie-man-image {
+        position: fixed;
+        right: -175px;
+        top: 300px;
+        transform: rotate(-56deg);
+      }
     }
 }

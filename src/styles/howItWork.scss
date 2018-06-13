@@ -2,4 +2,23 @@
     width: 30%;
     height: 600px;
     margin: auto;
+    .header {
+      font-size: 22px;
+      text-align: center;
+      display: block;
+
+    }
+    
+    ul {
+      list-style-type: none;
+      position: relative;
+      padding: 0px;
+
+      li img {
+          margin-top: 5px;
+          position: relative;
+          width: 50px;
+          top: 10px;
+      }
+    }
 }
