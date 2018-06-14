@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
-import {getSearchData, getNutritionData } from '../actions/mainPageActions';
+import {getSearchData, getNutritionData, popUpError } from '../actions/mainPageActions';
 import appSettings from '../../../../appSettings';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
@@ -20,7 +20,10 @@ class Search extends React.Component {
         .then(res => {
           this.props.getSearchData(res.data.list.item);
         })
-        .catch(err => console.log('error message:', err));
+        .catch(err => {
+          console.error(err);
+          this.props.popUpError();
+        });
     }
     handleChange(event) {
       this.setState({value: event.target.value});
@@ -45,6 +48,7 @@ const mapStateToProps = state => state;
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
+    popUpError: popUpError,
     getSearchData: getSearchData,
     getNutritionData: getNutritionData
   }, dispatch);

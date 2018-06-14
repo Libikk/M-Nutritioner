@@ -6,7 +6,11 @@ class MyNutritionPage extends React.Component {
   addAllItemsTogether(nutritionName) { 
     let valueNutrition = 0;
     this.props.searchData.myNutritionList.forEach(singleFood => {
-      valueNutrition = valueNutrition + singleFood.nutrition[nutritionName].value;
+      if(nutritionName === 'weight') {
+        valueNutrition = valueNutrition + singleFood.weight;
+      } else {
+        valueNutrition = valueNutrition + singleFood.nutrition[nutritionName].value;
+      }
     });
     return valueNutrition;
    }
@@ -17,6 +21,7 @@ class MyNutritionPage extends React.Component {
         <ul className="nutrition-page-list">
           <li className="each-row-list">
               <div>Food</div>
+              <div>Weight</div>
               <div>Kcal</div>
               <div>Protein</div>
               <div>Carbohydrate</div>
@@ -25,6 +30,7 @@ class MyNutritionPage extends React.Component {
           {myNutritionList.map(single => 
             <li className="each-row-list" key={single.id}>
               <div>{single.name}</div>
+              <div>{single.weight}</div>
               <div>{single.nutrition[0].value}</div>
               <div>{single.nutrition[1].value}</div>
               <div>{single.nutrition[3].value}</div>
@@ -33,6 +39,7 @@ class MyNutritionPage extends React.Component {
           )}
           <li className="each-row-list">
               <div>Summary</div>
+              <div>{this.addAllItemsTogether('weight')}</div>
               <div>{this.addAllItemsTogether(0)}</div>
               <div>{this.addAllItemsTogether(2)}</div>
               <div>{this.addAllItemsTogether(3)}</div>

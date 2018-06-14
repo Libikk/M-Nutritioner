@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { addToNutritionPage } from '../actions/nutritionDetailsActions';
+import { popUpError } from '../actions/mainPageActions';
 import appSettings from '../../../../appSettings';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -24,7 +25,15 @@ class NutritionDetails extends React.Component {
       this.setState({value: weight});
     }
     addToNutPage() {
-      this.props.addToNutritionPage(this.state.value / 100);
+      const { myNutritionList, singleItemNutrition } = this.props.searchData;
+      let alreadyExist = false;
+      if (myNutritionList) {
+        myNutritionList.forEach(element => {
+          element.id === singleItemNutrition.id ? (alreadyExist = true) : null;
+        });
+      };
+
+      alreadyExist ? this.props.popUpError("Sorry but nutrition already exist in your list :)") : this.props.addToNutritionPage(this.state.value / 100);
       this.setState({ value: 100 });
     }
 
@@ -75,6 +84,7 @@ const mapStateToProps = state => state;
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
+    popUpError: popUpError,
     addToNutritionPage: addToNutritionPage
   }, dispatch);
 }

@@ -2,7 +2,7 @@ const initialState = {
   myNutritionList: false,
   searchResult: false,
   singleItemNutrition: null,
-  error: null,
+  error: false,
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -10,6 +10,12 @@ const mainReducer = (state = initialState, action) => {
 
     case 'GET_SEARCH_DATA':
       return Object.assign({}, state, { searchResult: action.payload });
+
+    case 'CLEAR_ERROR':
+      return Object.assign({}, state, { error: false });
+
+    case 'POP_UP_ERROR':
+      return Object.assign({}, state, { error: action.payload ? action.payload : true });
 
     case 'GET_NUTRITION_DATA':
     const nutrition = action.payload.data.report.food.nutrients;

@@ -11,3 +11,13 @@ export const getNutritionData = (nutritionData) => {
         payload: nutritionData
     };
 };
+
+export const clearError = () => {
+    return { type: 'CLEAR_ERROR' };
+};
+
+export const popUpError = (errorMessage) => {
+    return { type: 'POP_UP_ERROR',
+             payload: errorMessage
+    };
+};

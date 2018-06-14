@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { render } from 'react-dom';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
-import { getNutritionData } from '../actions/mainPageActions';
+import { getNutritionData, popUpError } from '../actions/mainPageActions';
 import appSettings from '../../../../appSettings';
 import Icon from '@material-ui/core/Icon';
 
@@ -20,7 +20,10 @@ class ResultList extends React.Component {
     const url = `https://api.nal.usda.gov/ndb/reports/?ndbno=${itemId}&format=json&api_key=${appSettings.apiKey}`;
     axios.get(url)
     .then(res => { this.props.getNutritionData(res); })
-    .catch(err => console.log('error message:', err));
+    .catch(err => {
+      console.error(err);
+      this.props.popUpError();
+    });
   }
 
   render() {
@@ -60,6 +63,7 @@ class ResultList extends React.Component {
   
   function matchDispatchToProps(dispatch){
     return bindActionCreators({
+      popUpError: popUpError,
       getNutritionData: getNutritionData
     }, dispatch);
   }
