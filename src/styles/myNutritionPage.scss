@@ -2,24 +2,74 @@
   height: 600px;
   max-width: 40%;
   float: left;
+  padding: 0 15px;
 
   .nutrition-page-list {
     padding: 0px;
 
+    :nth-child(2){ border-top: 1px solid black; }
+
     .each-row-list {
       list-style: none;
       padding: 0px;        
-      height: 44px;
+      height: 45px;
+      padding: 5px 5px 6px;
       
+
       div {
         float: left;
-        width: 10%;
+        width: 14%;
         height: inherit;
         overflow: hidden;
+        border-top: none;
+
+        .edit-mode-input {
+          width: 80%;
+        }
       }
       :first-child {
-        width: 40%;
+        width: 25%;
+        margin-right: 5%;
       }
+      .edit-mode-input-container {
+        position: relative;
+        overflow: unset;
+
+        i {
+          border-top: none;
+          position: absolute;
+          top: 0px;
+          left: -27px;
+          color: orange;
+          cursor: pointer;
+        }
+      }
+      .not-edit-mode-input-container {
+        position: relative;
+        overflow: unset;
+
+        i {
+          border-top: none;
+          position: absolute;
+          top: 0px;
+          left: -27px;
+          color: green;
+          cursor: pointer;
+        }
+      }
+    }
+    .top-row {
+      font-size: 15px;
+      background: #cacaca;
+      :first-child { font-size: 21px; }
+    }
+    .middle-rows {
+      border-bottom: 1px solid black;
+    }
+    .bottom-row {
+      background: #cacaca;
+      font-size: 15px;
+      :first-child { font-size: 21px; }
     }
   }
 }

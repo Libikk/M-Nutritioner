@@ -21,3 +21,9 @@ export const popUpError = (errorMessage) => {
              payload: errorMessage
     };
 };
+
+export const changeWeight = (value) => {
+    return { type: 'CHANGE_ITEM_WEIGHT',
+             payload: value
+    };
+};

@@ -16,6 +16,10 @@ const mainReducer = (state = initialState, action) => {
 
     case 'POP_UP_ERROR':
       return Object.assign({}, state, { error: action.payload ? action.payload : true });
+      
+    case 'CHANGE_ITEM_WEIGHT':
+    console.log(action.payload);
+      return Object.assign({}, state);
 
     case 'GET_NUTRITION_DATA':
     const nutrition = action.payload.data.report.food.nutrients;

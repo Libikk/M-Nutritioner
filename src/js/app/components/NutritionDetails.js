@@ -51,7 +51,6 @@ class NutritionDetails extends React.Component {
               <TableCell>Value per: 
                 <Input 
                   className="details-input" 
-                  type="text" 
                   value={value} 
                   onChange={this.handleChange} 
                   type="number"
