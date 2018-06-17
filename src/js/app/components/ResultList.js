@@ -33,15 +33,14 @@ class ResultList extends React.Component {
     const currentTodos = searchResult.slice(indexOfFirstTodo, indexOfLastTodo);
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(searchResult.length / appSettings.resultPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(searchResult.length / appSettings.resultPerPage); i++) { // eslint-disable-line
       pageNumbers.push(i);
     }
-
     return (
       <div className="resultlist-container">
         <ul className="result-list">
-          {currentTodos.map((element, index) => (
-            <li onClick={() => this.getNutrition(element.ndbno)} className="each-result-container" key={index}>
+          {currentTodos.map(element => (
+            <li onClick={() => this.getNutrition(element.ndbno)} className="each-result-container" key={element.ndbno}>
               <span className="header-result-container">{element.name}</span>
               <p className="product-category-container">Type: {element.group}</p>
               <i className="material-icons">arrow_forward_ios</i>
