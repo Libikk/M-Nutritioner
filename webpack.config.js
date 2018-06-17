@@ -1,5 +1,6 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
+
 module.exports = {
   module: {
     rules: [
@@ -7,35 +8,35 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           'url-loader?limit=10000',
-          'img-loader'
-        ]
+          'img-loader',
+        ],
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
-          }
-        ]
+            loader: 'html-loader',
+          },
+        ],
       },
       {
         test: /\.(css|scss|sass)$/,
         loader: 'style-loader!css-loader!sass-loader',
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    })
-  ]
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+  ],
 };

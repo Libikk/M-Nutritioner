@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import Search from './components/Search';
 import ResultList from './components/ResultList';
 import NutritionDetails from './components/NutritionDetails';
@@ -8,7 +8,6 @@ import MyNutritionPage from './components/MyNutritionPage';
 import DisplayError from './shared/DisplayError';
 
 class MainPage extends React.Component {
-
   render() {
     const { singleItemNutrition, searchResult, myNutritionList, error } = this.props.searchData;
     return (
@@ -21,7 +20,7 @@ class MainPage extends React.Component {
             {myNutritionList ? <MyNutritionPage /> : <img className="veggie-man-image" src="/src/js/images/veggie_man.png" alt="veggie-man" />}
           </div>
         </div>
-        {error ? <DisplayError error={error}/> : null}
+        {error ? <DisplayError error={error} /> : null}
       </div>
     );
   }
