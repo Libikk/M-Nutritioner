@@ -27,17 +27,35 @@
       right: 50%;
       box-shadow: 10px 10px 24px;
 
+      @media #{$phone} { width: 300px; }
+      @media #{$smallphone} { width: 200px; }
+
       .message-header {
         background: #00b700;;
         padding: 15px;
 
-        .header-text { 
+        @media #{$phone} { padding: 12.5px; }
+        @media #{$smallphone} { padding: 10px; }
+
+        .header-text {
           margin: 0;
+
+          @media #{$phone} { font-size: 27px; }
+          @media #{$smallphone} { font-size: 25px; }
 
           .icon-error {
             font-size: 39px;
             position: relative;
             top: 9px;
+
+            @media #{$phone} { 
+              font-size: 31px; 
+              top: 7px;
+            }
+            @media #{$smallphone} { 
+              font-size: 29px;
+              top: 6px;
+            }
           };
         }
 
@@ -47,7 +65,25 @@
         background: white;
         padding: 15px;
 
-        h4 { font-size: 12px; }
+        @media #{$phone} { padding: 12.5px }
+        @media #{$smallphone} { padding: 10px }
+
+        h3 { 
+          @media #{$phone} { 
+            margin: 7.5px 0; 
+            font-size: 15px;
+          } 
+          @media #{$smallphone} { 
+            margin: 5px 0; 
+            font-size: 13px;
+          }
+        }
+        h4 { 
+          font-size: 12px;
+
+          @media #{$phone} { font-size: 10px }
+          @media #{$smallphone} { font-size: 10px }
+        }
 
         .clear-error-button {
           margin-top: 10px;

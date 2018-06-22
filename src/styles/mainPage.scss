@@ -1,3 +1,5 @@
+@import 'variables';
+
 html {
   max-height: 100%;
 }
@@ -14,11 +16,23 @@ body {
       max-width: 1260px;
       margin: 0 auto;
 
+      .content-container {
+        min-width: 333px;
+        .content-flex {
+          margin: auto;
+        }
+      }
+      
       .veggie-man-image {
         position: fixed;
         right: -175px;
         top: 300px;
         transform: rotate(-56deg);
+
+        @media #{$tablet} { display: none; }
+        @media #{$phone} { display: none; }
+        @media #{$smallphone} { display: none; }
+
       }
     }
 }

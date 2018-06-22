@@ -1,8 +1,11 @@
 .nutrition-page-list-container {
   height: 600px;
-  max-width: 40%;
   float: left;
   padding: 0 15px;
+  width: 31%;
+
+  @media #{$phone} { width: 100%; }
+  @media #{$smallphone} { width: 100%; }
 
   .nutrition-page-list {
     padding: 0px;

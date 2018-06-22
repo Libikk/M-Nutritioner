@@ -32,6 +32,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-container">
+        <img className="raddish-logo" src="./src/js/images/raddish.png" alt="raddish" />
         <img className="fixed-veggies" src="./src/js/images/veggiemix.png" alt="nutritioner, veggies" />
         <h1>M-Nutritioner</h1>
         <Input type="text" value={this.state.value} onChange={this.handleChange} onKeyPress={this.handleKeyPress} placeholder="Type product" />

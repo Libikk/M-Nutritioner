@@ -15,8 +15,8 @@ class MainPage extends React.Component {
         <div className="main-container">
           <Search />
           <div className="content-container">
-            {searchResult ? <ResultList /> : null}
-            {singleItemNutrition ? <NutritionDetails /> : <HowItWork />}
+            {searchResult ? <ResultList /> : <HowItWork />}
+            {singleItemNutrition ? <NutritionDetails /> : null}
             {myNutritionList ? <MyNutritionPage /> : <img className="veggie-man-image" src="/src/js/images/veggie_man.png" alt="veggie-man" />}
           </div>
         </div>
