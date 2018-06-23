@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import { getSearchData, getNutritionData, popUpError } from '../actions/mainPageActions';
+import { getSearchData, getNutritionData, popUpError, fetchNutritionPageContent } from '../actions/mainPageActions';
 import appSettings from '../../../../appSettings';
 
 
@@ -15,6 +15,13 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
+  componentDidMount() {
+    const tipLocalStorage = JSON.parse(localStorage.getItem('nutritionPageList'));
+    if (tipLocalStorage) {
+      this.props.fetchNutritionPageContent(tipLocalStorage);
+    }
+  }
+
   searchValue(searchValue) {
     const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${searchValue}&ds=Standard%20Reference&sort=r&max=50&offset=0&api_key=${appSettings.apiKey}`;
     axios.get(url)
@@ -33,7 +40,6 @@ class Search extends React.Component {
     return (
       <div className="search-container">
         <img className="raddish-logo" src="./src/js/images/raddish.png" alt="raddish" />
-        <img className="fixed-veggies" src="./src/js/images/veggiemix.png" alt="nutritioner, veggies" />
         <h1>M-Nutritioner</h1>
         <Input type="text" value={this.state.value} onChange={this.handleChange} onKeyPress={this.handleKeyPress} placeholder="Type product" />
         <Button onClick={() => this.searchValue(this.state.value)}>Search</Button>
@@ -49,6 +55,7 @@ function matchDispatchToProps(dispatch) {
     popUpError,
     getSearchData,
     getNutritionData,
+    fetchNutritionPageContent,
   }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Search);

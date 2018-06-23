@@ -17,7 +17,6 @@ const mainReducer = (state = initialState, action) => {
       return Object.assign({}, state, { error: action.payload ? action.payload : true });
 
     case 'CHANGE_ITEM_WEIGHT':
-      console.log(action.payload);
       return Object.assign({}, state);
 
     case 'GET_NUTRITION_DATA': {
@@ -27,18 +26,18 @@ const mainReducer = (state = initialState, action) => {
           name: action.payload.data.report.food.name,
           id: action.payload.data.report.food.ndbno,
           nutrition: [
-            { value: nutrition[1].value, nutritionName: 'Kcal' },
-            { value: nutrition[2].value, nutritionName: 'Protein' },
-            { value: nutrition[3].value, nutritionName: 'Fat' },
-            { value: nutrition[4].value, nutritionName: 'Carbohydrates' },
-            { value: nutrition[5].value, nutritionName: 'Fiber' },
-            { value: nutrition[21].value, nutritionName: 'Vitamin A' },
-            { value: nutrition[14].value, nutritionName: 'Vitamin C' },
-            { value: nutrition[23].value, nutritionName: 'Vitamin E' },
-            { value: nutrition[11].value, nutritionName: 'Potassium' },
-            { value: nutrition[9].value, nutritionName: 'Magnesium' },
-            { value: nutrition[12].value, nutritionName: 'Sodium' },
-            { value: nutrition[7].value, nutritionName: 'Calcium' },
+            { rate: nutrition[1].value, value: nutrition[1].value, nutritionName: 'Kcal' },
+            { rate: nutrition[2].value, value: nutrition[2].value, nutritionName: 'Protein' },
+            { rate: nutrition[3].value, value: nutrition[3].value, nutritionName: 'Fat' },
+            { rate: nutrition[4].value, value: nutrition[4].value, nutritionName: 'Carbohydrates' },
+            { rate: nutrition[5].value, value: nutrition[5].value, nutritionName: 'Fiber' },
+            { rate: nutrition[21].value, value: nutrition[21].value, nutritionName: 'Vitamin A' },
+            { rate: nutrition[14].value, value: nutrition[14].value, nutritionName: 'Vitamin C' },
+            { rate: nutrition[23].value, value: nutrition[23].value, nutritionName: 'Vitamin E' },
+            { rate: nutrition[11].value, value: nutrition[11].value, nutritionName: 'Potassium' },
+            { rate: nutrition[9].value, value: nutrition[9].value, nutritionName: 'Magnesium' },
+            { rate: nutrition[12].value, value: nutrition[12].value, nutritionName: 'Sodium' },
+            { rate: nutrition[7].value, value: nutrition[7].value, nutritionName: 'Calcium' },
           ] },
       });
     }
@@ -48,12 +47,37 @@ const mainReducer = (state = initialState, action) => {
         id: state.singleItemNutrition.id,
         weight: 100 * action.payload,
         nutrition: state.singleItemNutrition.nutrition.map(single =>
-          ({ value: Math.round(single.value * action.payload), nutritionName: single.nutritionName })),
+          Object.assign({}, single, { value: Math.round(single.value * action.payload) })),
       };
       const newItemMergedWithCurrentList = state.myNutritionList ?
         { myNutritionList: state.myNutritionList.concat([newItem]) }
         : { myNutritionList: [newItem] };
+      localStorage.setItem('nutritionPageList', JSON.stringify(newItemMergedWithCurrentList.myNutritionList));
       return Object.assign({}, state, newItemMergedWithCurrentList);
+    }
+    case 'REMOVE_ITEM': {
+      let updatedNutritionList = [];
+      state.myNutritionList.forEach((single) => {
+        if (single.id !== action.payload) { updatedNutritionList = updatedNutritionList.concat(single); }
+      });
+      localStorage.setItem('nutritionPageList', JSON.stringify(updatedNutritionList));
+      return Object.assign({}, state, { myNutritionList: updatedNutritionList });
+    }
+    case 'CHANGE_WEIGHT_OF_MY_ITEM': {
+      const updatedNutritionList = state.myNutritionList.map((single) => {
+        if (single.id === action.payload.id) {
+          return Object.assign({}, single, {
+            weight: action.payload.weight,
+            nutrition: single.nutrition.map(singleNut =>
+              Object.assign({}, singleNut, { value: Math.round((singleNut.rate / 100) * action.payload.weight) })),
+          });
+        }
+        return single;
+      });
+      return Object.assign({}, state, { myNutritionList: updatedNutritionList });
+    }
+    case 'FETCH_NUTRITION_PAGE': {
+      return Object.assign({}, state, { myNutritionList: action.payload });
     }
     default: return state;
   }

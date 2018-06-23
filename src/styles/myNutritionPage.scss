@@ -38,12 +38,20 @@
         position: relative;
         overflow: unset;
 
-        i {
+        i:nth-child(2) {
           border-top: none;
           position: absolute;
           top: 0px;
-          left: -27px;
+          left: -21px;
           color: orange;
+          cursor: pointer;
+        }
+        i:nth-child(3) {
+          border-top: none;
+          position: absolute;
+          top: 22px;
+          left: -21px;
+          color: red;
           cursor: pointer;
         }
       }
@@ -51,12 +59,20 @@
         position: relative;
         overflow: unset;
 
-        i {
+        i:first-child {
           border-top: none;
           position: absolute;
           top: 0px;
-          left: -27px;
+          left: -21px;
           color: green;
+          cursor: pointer;
+        }
+        i:nth-child(2) {
+          border-top: none;
+          position: absolute;
+          top: 22px;
+          left: -21px;
+          color: red;
           cursor: pointer;
         }
       }

@@ -12,6 +12,7 @@ class MainPage extends React.Component {
     const { singleItemNutrition, searchResult, myNutritionList, error } = this.props.searchData;
     return (
       <div className="container">
+        <img className="fixed-veggies" src="./src/js/images/veggiemix.png" alt="nutritioner, veggies" />
         <div className="main-container">
           <Search />
           <div className="content-container">

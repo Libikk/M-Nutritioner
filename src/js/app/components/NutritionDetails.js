@@ -18,15 +18,17 @@ class NutritionDetails extends React.Component {
   }
   addToNutPage() {
     const { myNutritionList, singleItemNutrition } = this.props.searchData;
+    let elementAlreadyExist = false;
     if (myNutritionList) {
       myNutritionList.forEach((element) => {
         if (element.id === singleItemNutrition.id) {
+          elementAlreadyExist = true;
           this.props.popUpError('Sorry but nutrition already exist in your list :)');
         }
       });
     }
-    this.props.addToNutritionPage(this.state.value / 100);
     this.setState({ value: 100 });
+    elementAlreadyExist ? null : this.props.addToNutritionPage(this.state.value / 100) /* eslint-disable-line */
   }
 
   render() {

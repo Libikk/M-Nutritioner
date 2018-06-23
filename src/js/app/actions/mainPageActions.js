@@ -8,6 +8,16 @@ export const getNutritionData = nutritionData => ({
   payload: nutritionData,
 });
 
+export const removeItem = idItem => ({
+  type: 'REMOVE_ITEM',
+  payload: idItem,
+});
+
+export const changeWeightMyItem = nutritionDetails => ({
+  type: 'CHANGE_WEIGHT_OF_MY_ITEM',
+  payload: nutritionDetails,
+});
+
 export const clearError = () => ({
   type: 'CLEAR_ERROR',
 });
@@ -17,7 +27,7 @@ export const popUpError = errorMessage => ({
   payload: errorMessage,
 });
 
-export const changeWeight = value => ({
-  type: 'CHANGE_ITEM_WEIGHT',
-  payload: value,
+export const fetchNutritionPageContent = data => ({
+  type: 'FETCH_NUTRITION_PAGE',
+  payload: data,
 });
