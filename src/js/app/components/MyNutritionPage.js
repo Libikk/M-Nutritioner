@@ -46,6 +46,7 @@ class MyNutritionPage extends React.Component {
     const { myNutritionList } = this.props.searchData;
     return (
       <div className="nutrition-page-list-container" ref={this.myRef}>
+        <button onClick={() => console.log(this.props)}> state </button>
         <PDFfile myNutritionList={myNutritionList} />
         <ul className="nutrition-page-list">
           <li className="each-row-list top-row">

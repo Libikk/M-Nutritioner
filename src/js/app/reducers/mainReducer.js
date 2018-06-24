@@ -74,6 +74,7 @@ const mainReducer = (state = initialState, action) => {
         }
         return single;
       });
+      localStorage.setItem('nutritionPageList', JSON.stringify(updatedNutritionList));
       return Object.assign({}, state, { myNutritionList: updatedNutritionList });
     }
     case 'FETCH_NUTRITION_PAGE': {
