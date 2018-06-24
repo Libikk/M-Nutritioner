@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Input from '@material-ui/core/Input';
 import { changeWeight, removeItem, changeWeightMyItem } from '../actions/mainPageActions';
+import PDFfile from './PDFfile';
 
 class MyNutritionPage extends React.Component {
   constructor() {
@@ -44,7 +45,8 @@ class MyNutritionPage extends React.Component {
   render() {
     const { myNutritionList } = this.props.searchData;
     return (
-      <div className="nutrition-page-list-container">
+      <div className="nutrition-page-list-container" ref={this.myRef}>
+        <PDFfile myNutritionList={myNutritionList} />
         <ul className="nutrition-page-list">
           <li className="each-row-list top-row">
             <div>Food</div>
