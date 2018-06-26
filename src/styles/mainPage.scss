@@ -18,21 +18,9 @@ body {
 
       .content-container {
         min-width: 333px;
-        .content-flex {
-          margin: auto;
+        .wrapper {
+          text-align: center;
         }
-      }
-      
-      .veggie-man-image {
-        position: fixed;
-        right: -175px;
-        top: 300px;
-        transform: rotate(-56deg);
-
-        @media #{$tablet} { display: none; }
-        @media #{$phone} { display: none; }
-        @media #{$smallphone} { display: none; }
-
       }
     }
   .fixed-veggies {

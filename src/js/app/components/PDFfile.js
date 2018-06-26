@@ -84,11 +84,11 @@ class PDFfile extends React.Component {
     doc.setFontSize(14);
     doc.text(`${this.addAllItemsTogether(0)}`, 369, doc.autoTable.previous.finalY + 30);
     doc.setFontSize(14);
-    doc.text(`${this.addAllItemsTogether(2)}g`, 425, doc.autoTable.previous.finalY + 30);
+    doc.text(`${this.addAllItemsTogether(2)}g`, 419, doc.autoTable.previous.finalY + 30);
     doc.setFontSize(14);
     doc.text(`${this.addAllItemsTogether(3)}g`, 473, doc.autoTable.previous.finalY + 30);
     doc.setFontSize(14);
-    doc.text(`${this.addAllItemsTogether(1)}g`, 526, doc.autoTable.previous.finalY + 30);
+    doc.text(`${this.addAllItemsTogether(1)}g`, 518, doc.autoTable.previous.finalY + 30);
 
     doc.save('table.pdf');
   }
@@ -96,7 +96,7 @@ class PDFfile extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.demoFromHTML()}>PDF FILE</button>
+        <img className="pdf-icon" src="./src/js/images/pdfIcon.png" onClick={() => this.demoFromHTML()} alt="PDF download" />
       </div>
     );
   }

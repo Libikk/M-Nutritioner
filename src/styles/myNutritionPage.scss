@@ -1,11 +1,20 @@
 .nutrition-page-list-container {
-  height: 600px;
-  float: left;
-  padding: 0 15px;
+  display: inline-grid;
+  margin: 0 2%;
   width: 31%;
+  position: relative;
 
-  @media #{$phone} { width: 100%; }
-  @media #{$smallphone} { width: 100%; }
+  @-moz-document url-prefix() {
+    display: inline-block;
+  }
+  @media #{$phone} { 
+    margin-top: 20px;
+    width: 96%;
+  }
+  @media #{$smallphone} { 
+    margin-top: 20px;
+    width: 96%;
+  }
 
   .nutrition-page-list {
     padding: 0px;
@@ -17,10 +26,12 @@
       padding: 0px;        
       height: 45px;
       padding: 5px 5px 6px;
+      text-align: center;
+
       
 
       div {
-        float: left;
+        display: inline-block;
         width: 14%;
         height: inherit;
         overflow: hidden;
@@ -31,8 +42,9 @@
         }
       }
       :first-child {
-        width: 25%;
-        margin-right: 5%;
+        width: 24%;
+        margin-right: 6%;
+        text-align: left;
       }
       .edit-mode-input-container {
         position: relative;
@@ -46,6 +58,12 @@
           color: orange;
           cursor: pointer;
         }
+        input {
+          width: 100%;
+          overflow: hidden;
+          @media #{$smallphone} { font-size: 14px; }
+        }
+
         i:nth-child(3) {
           border-top: none;
           position: absolute;
@@ -58,6 +76,7 @@
       .not-edit-mode-input-container {
         position: relative;
         overflow: unset;
+        top: -28px;
 
         i:first-child {
           border-top: none;
@@ -80,15 +99,33 @@
     .top-row {
       font-size: 15px;
       background: #cacaca;
-      :first-child { font-size: 21px; }
+
+      @media #{$tablet} { font-size: 1.3vw; }
+      @media #{$smallphone} { font-size: 14px; }
+
+      :first-child { 
+
+        font-size: 21px; 
+        @media #{$tablet} { font-size: 1.7vw; }
+        @media #{$smallphone} { font-size: 18px; }
+      }
     }
     .middle-rows {
       border-bottom: 1px solid black;
+      @media #{$tablet} { font-size: 1.3vw; }
+      @media #{$smallphone} { font-size: 14px; }
     }
     .bottom-row {
       background: #cacaca;
       font-size: 15px;
-      :first-child { font-size: 21px; }
+      @media #{$tablet} { font-size: 1.3vw; }
+      @media #{$smallphone} { font-size: 14px; }
+
+      :first-child { 
+        font-size: 21px;
+        @media #{$tablet} { font-size: 1.7vw; }
+        @media #{$smallphone} { font-size: 18px; }
+      }
     }
   }
 }

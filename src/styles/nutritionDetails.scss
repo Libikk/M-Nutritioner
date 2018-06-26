@@ -1,8 +1,21 @@
 .nutrition-container {
     width: 56%;
-    float: left;
-    min-width: 190px;
+    display: inline-grid;
+    min-width: 203px;
     max-width: 272px;
+    
+    @-moz-document url-prefix() {
+      display: inline-block;
+    }
+
+    @media #{$phone} { 
+      display:block; 
+      float: left;
+    }
+    @media #{$smallphone} { 
+      display:block; 
+      float: left;
+    }
 
     .nuttrition-name-header {
       text-align: center;
