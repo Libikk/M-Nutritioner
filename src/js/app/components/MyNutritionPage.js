@@ -15,19 +15,14 @@ class MyNutritionPage extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const weight = event.target.value > 5000 ? 5000 : event.target.value;
     this.props.changeWeightMyItem({ weight, id: event.target.id });
     this.setState({ weight });
   }
-  editMode(id, weight) {
-    this.setState({
-      idToEdit: id,
-      weight,
-    });
-  }
+  editMode = (id, weight) => this.setState({ idToEdit: id, weight });
 
-  addAllItemsTogether(nutritionName) {
+  addAllItemsTogether = (nutritionName) => {
     let valueNutrition = 0;
     this.props.searchData.myNutritionList.forEach((singleFood) => {
       if (nutritionName === 'weight') {
@@ -38,7 +33,7 @@ class MyNutritionPage extends React.Component {
     });
     return valueNutrition;
   }
-  removeItem(id) {
+  removeItem = (id) => {
     this.props.removeItem(id);
     this.setState({ idToEdit: 0 });
   }

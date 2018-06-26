@@ -19,7 +19,7 @@ export const changeWeightMyItem = nutritionDetails => ({
 });
 
 export const clearError = () => ({
-  type: 'CLEAR_ERROR',
+type: 'CLEAR_ERROR',
 });
 
 export const popUpError = errorMessage => ({

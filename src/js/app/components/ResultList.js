@@ -12,10 +12,10 @@ class ResultList extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  getNutrition(itemId) {
+  getNutrition = (itemId) => {
     const url = `https://api.nal.usda.gov/ndb/reports/?ndbno=${itemId}&format=json&api_key=${appSettings.apiKey}`;
     axios.get(url)
-      .then((res) => { this.props.getNutritionData(res); })
+      .then(res => this.props.getNutritionData(res))
       .catch((err) => {
         console.error(err);
         this.props.popUpError();

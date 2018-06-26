@@ -28,10 +28,10 @@ class DisplayError extends React.Component {
   }
 }
 
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
+const matchDispatchToProps = (dispatch) => {
+  bindActionCreators({
     clearError,
   }, dispatch);
-}
+};
 
 export default connect(null, matchDispatchToProps)(DisplayError);

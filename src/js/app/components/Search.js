@@ -15,26 +15,24 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
-  componentDidMount() {
+  componentDidMount = () => {
     const tipLocalStorage = JSON.parse(localStorage.getItem('nutritionPageList'));
     if (tipLocalStorage) {
       this.props.fetchNutritionPageContent(tipLocalStorage);
     }
   }
 
-  searchValue(searchValue) {
+  searchValue = (searchValue) => {
     const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${searchValue}&ds=Standard%20Reference&sort=r&max=50&offset=0&api_key=${appSettings.apiKey}`;
     axios.get(url)
-      .then((res) => {
-        this.props.getSearchData(res.data.list.item);
-      })
+      .then(res => this.props.getSearchData(res.data.list.item))
       .catch((err) => {
         console.error(err);
         this.props.popUpError();
       });
   }
-  handleChange(event) { this.setState({ value: event.target.value }); }
-  handleKeyPress(event) { return event.key === 'Enter' ? this.searchValue(this.state.value) : null; }
+  handleChange = (event) => { this.setState({ value: event.target.value }); }
+  handleKeyPress = event => (event.key === 'Enter' ? this.searchValue(this.state.value) : null);
 
   render() {
     return (

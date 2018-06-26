@@ -12,11 +12,11 @@ class NutritionDetails extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const weight = event.target.value > 5000 ? 5000 : event.target.value;
     this.setState({ value: weight });
   }
-  addToNutPage() {
+  addToNutPage = () => {
     const { myNutritionList, singleItemNutrition } = this.props.searchData;
     let elementAlreadyExist = false;
     if (myNutritionList) {
