@@ -10,7 +10,7 @@ class DisplayError extends React.Component {
     const { error } = this.props;
     return (
       <div className="display-error-component">
-        <div className="display-error-background" onClick={() => this.props.clearError()} />
+        <div className="display-error-background" onClick={this.props.clearError} />
         <div className="display-error-message">
           <div className="error-content">
             <div className="message-header">
@@ -19,7 +19,7 @@ class DisplayError extends React.Component {
             <div className="message-body">
               <h3>Oops! Something went wrong...</h3>
               <h4>{typeof error === 'string' ? error : 'Please try again'}</h4>
-              <Button className="clear-error-button" onClick={() => this.props.clearError()}>OK</Button>
+              <Button className="clear-error-button" onClick={this.props.clearError}>OK</Button>
             </div>
           </div>
         </div>
@@ -28,10 +28,10 @@ class DisplayError extends React.Component {
   }
 }
 
-const matchDispatchToProps = (dispatch) => {
-  bindActionCreators({
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({
     clearError,
   }, dispatch);
-};
+}
 
 export default connect(null, matchDispatchToProps)(DisplayError);

@@ -7,6 +7,7 @@
   @-moz-document url-prefix() {
     display: inline-block;
   }
+  
   @media #{$phone} { 
     margin-top: 20px;
     width: 96%;

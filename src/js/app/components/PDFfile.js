@@ -90,7 +90,7 @@ class PDFfile extends React.Component {
     doc.setFontSize(14);
     doc.text(`${this.addAllItemsTogether(1)}g`, 518, doc.autoTable.previous.finalY + 30);
 
-    doc.save('table.pdf');
+    doc.save('M-Nutritioner_table.pdf');
   }
 
   render() {

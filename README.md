@@ -16,6 +16,6 @@ Once cloned/downloaded cd to directory and:
 ```
 npm install
 
-npm run start
+npm start
 ```
 http://localhost:8080
